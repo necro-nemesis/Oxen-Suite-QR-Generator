@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Session QR Generator</title>
+
+  <script type="text/javascript" src="https://unpkg.com/qr-code-styling/lib/qr-code-styling.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <header id="header"><h1>Session QR Generator</h1></header>
+
+  <section id="content">
+
+    <div>
+
+      <form id="qrForm" onsubmit="return false;">
+
+        <div class="inputContainer">
+
+          <label for="dataInput">Session Address</label>
+
+          <input type="text" onchange="updateQrData();" name="dataInput" id="dataInput" placeholder="https://getsession.org" required />
+
+        </div>
+
+      </form>
+
+      <button id="formButton" onclick="download();">Download</button>
+
+    </div>
+
+    <div id="canvas"></div>
+
+  </section>
+
+  <script type="text/javascript" src="qr.js"></script>
+
+</body>
+
+</html>
