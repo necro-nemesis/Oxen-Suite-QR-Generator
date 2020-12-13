@@ -1,5 +1,7 @@
 # Session-qr-code-online-generator
 
+![](https://i.imgur.com/e9pPV2k.jpg)
+
 ## Install Linux (nginx)
 
 - sudo apt install npm
