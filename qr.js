@@ -1,27 +1,44 @@
-qrData = document.getElementById('dataInput');
+class OSQrGenerator{
+  constructor(name, defaultData, image, textFieldId, canvasId) {
 
-const qrCode = new QRCodeStyling({
-  width: 300,
-  height: 300,
-  data: "https://getsession.org/",
-  image: "SESSION-Vertical-Lockup.png",
-  dotsOptions: {
-    //color: "#00F782",
-    color: "#000000",
-    type: "rounded"
-  },
-  backgroundOptions: {
-    color: "#e8ebee",
+    this.name = name;
+    this.defaultData = defaultData;
+    this.qrData = document.getElementById(textFieldId);
+    this.qrCode = new QRCodeStyling({
+      width: 300,
+      height: 300,
+      data: this.defaultData,
+      image: image,
+      dotsOptions: {
+        color: "#000000",
+        type: "rounded"
+      },
+      backgroundOptions: {
+        color: "#e8ebee",
+      }
+    });
+
+    this.qrCode.append(document.getElementById(canvasId));
+
+    this.update = this.update.bind(this);
+    this.download = this.download.bind(this);
   }
-});
 
-const updateQrData = () => {
-  newQrData = qrData.value;
-  qrCode.update({
-    data: newQrData
-  });
-};
+  update() {
+    let newQrData = this.qrData.value;
+    if (newQrData.length === 0) newQrData = this.defaultData;
+    this.qrCode.update({
+      data: newQrData
+    });
+  }
 
-const download = () => qrCode.download("jpeg");
+  download() {
+    this.qrCode.download({
+      name: this.name,
+      extension: "jpeg"
+    });
+  }
+}
 
-qrCode.append(document.getElementById('canvas'));
+const session = new OSQrGenerator("SessionAddress", "https://getsession.org/", "session_icon.png", 'dataInput', 'canvas');
+const oxen = new OSQrGenerator("OxenWallet", "https://oxen.io/", "oxen_icon.png", 'oxenDataInput', 'oxenCanvas');

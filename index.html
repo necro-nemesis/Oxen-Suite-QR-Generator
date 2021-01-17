@@ -6,9 +6,9 @@
 
   <meta charset="UTF-8">
 
-  <title>Session QR Generator</title>
+  <title>Oxen Suite QR Generator</title>
 
-  <script type="text/javascript" src="libraries/node_modules/qr-code-styling/lib/qr-code-styling.js"></script>
+  <script type="text/javascript" src="/node_modules/qr-code-styling/lib/qr-code-styling.js"></script>
 
   <link rel="stylesheet" href="style.css">
 
@@ -16,9 +16,9 @@
 
 <body>
 
-  <header id="header"><h1>Session QR Generator</h1></header>
+  <header id="header"><h1>Oxen Suite QR Generator</h1></header>
 
-  <section id="content">
+  <section id="sessionContent" class="content">
 
     <div>
 
@@ -28,17 +28,41 @@
 
           <label for="dataInput">Session Address</label>
 
-          <input type="text" onchange="updateQrData();" name="dataInput" id="dataInput" placeholder="https://getsession.org" required />
+          <input type="text" onchange="session.update();" name="dataInput" id="dataInput" placeholder="https://getsession.org" class="textField" required />
 
         </div>
 
       </form>
 
-      <button id="formButton" onclick="download();">Download</button>
+      <button class="formButton" onclick="session.download();">Download</button>
 
     </div>
 
     <div id="canvas"></div>
+
+  </section>
+
+  <section id="oxenContent" class="content">
+
+    <div>
+
+      <form id="oxenQrForm" onsubmit="return false;">
+
+        <div class="inputContainer">
+
+          <label for="oxenDataInput">Oxen Wallet Address</label>
+
+          <input type="text" onchange="oxen.update();" name="dataInput" id="oxenDataInput" placeholder="https://oxen.io" class="textField"  required />
+
+        </div>
+
+      </form>
+
+      <button class="formButton" onclick="oxen.download();">Download</button>
+
+    </div>
+
+    <div id="oxenCanvas"></div>
 
   </section>
 
