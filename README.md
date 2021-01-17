@@ -1,6 +1,6 @@
-# Session-qr-code-online-generator
+# Oxen Suite QR Generator
 
-![](https://i.imgur.com/e9pPV2k.jpg)
+![](https://i.imgur.com/CMvPjs9.png)
 
 ## Install Linux (nginx)
 
